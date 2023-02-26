@@ -1,7 +1,7 @@
 import fetch from "node-fetch";
 import fs from "fs";
 
-const API_TOKEN = fs.filereadFileSync(".ph-token", "utf8").trim();
+const API_TOKEN = fs.readFileSync(".ph-token", "utf8").trim();
 const API_BASE_URL = "https://api.producthunt.com/v1";
 
 async function main() {
@@ -24,7 +24,7 @@ async function main() {
     while (currentDate < new Date()) {
       const year = currentDate.getUTCFullYear();
       const month = currentDate.getUTCMonth() + 1;
-      const url = `${API_BASE_URL}/posts/all?sort_by=votes_count&order=desc&search[featured_month]=${month}&search[featured_year]=${year}`;
+      const url = `${API_BASE_URL}/posts/all?sort_by=votes_count&order=desc&search[featured_month]=${month}&search[featured_year]=${year}&search[topic]=developer-tools`;
       console.log(">", url);
       // Make an API request to get the best products of the month
       const resp = await fetch(url, {
