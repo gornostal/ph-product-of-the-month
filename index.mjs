@@ -60,7 +60,10 @@ async function main() {
     console.error("Error:", error);
   }
 
-  fs.writeFileSync("index.html", [...html, ...productHtml.reverse()].join("\n"));
+  fs.writeFileSync(
+    "index.html",
+    [...html, ...productHtml.reverse()].join("\n")
+  );
 }
 
 main();
